@@ -1,0 +1,22 @@
+.form-group {
+  margin-top: 10px;
+}
+
+form {
+  overflow: auto;
+}
+
+nav {
+  position: sticky !important;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+#addModal.is-active {
+  display: block;
+}
+
+#addModal {
+  display: none;
+}
