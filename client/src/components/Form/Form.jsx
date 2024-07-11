@@ -144,17 +144,25 @@ const Form = () => {
       isActive: "is-active",
       type,
     });
-    $("#addModal button").one("click", function () {
+    $("#addModal button.btn-secondary").one("click", function () {
+      $("#addModal input").each(function () {
+        $(this).val("");
+      });
       setModalState({ ...modalState, isActive: "" });
     });
     $("#addModal button.btn-primary").one("click", function () {
+      setModalState({ ...modalState, isActive: "" });
+      let isEmpty = "";
       const newData = {};
       $("#addModal input").each(function () {
         const $this = $(this);
         const key = $this.prop("name");
-        const val = $this.val();
+        const val = $this.val().trim();
+        $this.val("");
+        isEmpty += val;
         newData[key] = val;
       });
+      if (isEmpty == "") return false;
       const oldData = data[type];
       oldData.push(newData);
       setData({ ...data, [type]: [...oldData] });
